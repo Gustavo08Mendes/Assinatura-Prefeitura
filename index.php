@@ -3,30 +3,13 @@
 <head>
 
 
-	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="css/style.css">
 
 </head>
 
 <body>
 
-
-
-	<?php
-	if (empty($_REQUEST)) {
-		$erro = "";
-	} else {
-		$erro = $_GET['m'];
-	}
-
-	if ($erro == "erro") {
-		echo "<center><H2><font color=red>Erro no login, favor testar novamente.</font></h2></center><br>";
-	} else {
-		echo "<div class='titulo_2'><h2>Digite seu usuário e senha da rede.</h2></div>";
-	}
-
-	?>
-
-	<form method="post" action="ass.php" name="form" AUTOCOMPLETE='ON' onSubmit="return valida()" class="formulario">
+	<form method="post" action="ldap.php" name="form" AUTOCOMPLETE='ON' onSubmit="return valida()" class="formulario">
 
 		<div class="formulario" id="container_formulario">
 			<div class="form-contatos">
@@ -44,7 +27,7 @@
 			</div>
 		</div>
 		<div class="botao_inserir">
-			<button type="submit" data-tooltip="Digite usuario e senha validos" id="bnt_entrar" class="carregar_btn" disabled>Entrar</button>
+			<button type="submit" data-tooltip="Digite usuario e senha validos" id="bnt_entrar" name="bnt_entrar" class="carregar_btn" disabled>Entrar</button>
 		</div>
 	</form>
 
@@ -88,7 +71,7 @@
 				const tamanhoInputUser = inputUsuario.value.length;
 				const tamanhoInputSenha = inputSenha.value.length;
 
-				const inputValidoUser = tamanhoInputUser > 6;
+				const inputValidoUser = tamanhoInputUser > 5;
 				const inputValidoSenha = tamanhoInputSenha > 5;
 
 				if (inputValidoUser && inputValidoSenha) {

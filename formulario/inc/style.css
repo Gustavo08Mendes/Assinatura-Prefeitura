@@ -1,0 +1,139 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: rgb(218, 218, 218);
+}
+
+a {
+  font-style: none;
+  text-decoration: none;
+  color: black;
+}
+
+.container-img {
+  background-color: aqua;
+}
+
+#cargo-img {
+  margin-left: 6px;
+}
+
+.setor-cargo {
+  display: flex;
+}
+
+.titulo_2 {
+  text-align: center;
+  padding: 20px 0;
+}
+.titulo_2 h2 {
+  font-size: 20px;
+}
+.container {
+  max-width: 800px;
+}
+
+.container-img {
+  display: flex;
+  justify-content: start;
+  width: 520px;
+  height: 172px;
+  background-color: white;
+  box-shadow: 3px 5px 10px gray;
+}
+
+.div_img img {
+  max-width: 200px;
+  margin-left: -30px;
+}
+
+.div_img {
+  display: flex;
+  align-items: center;
+  width: 152px;
+  padding-left: 5px;
+}
+
+.conteudo {
+  width: 100%;
+  height: 100%;
+  padding-left: 10px;
+}
+
+.conteudo p {
+  font-size: 12px;
+  margin: -4px 0px;
+}
+
+#nome-img {
+  font-size: 18px;
+  text-transform: uppercase;
+  font-weight: bold;
+  margin: 0;
+  padding: 30px 0 0 0;
+}
+
+.container-conteudo {
+  border-left: 3px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 361px;
+}
+
+.informações {
+  margin-top: 15px;
+}
+
+#setor {
+  text-transform: uppercase;
+}
+
+.result {
+  margin-top: 40px;
+  background-color: black;
+  width: 520px !important;
+}
+
+.download_img {
+  width: 520px !important;
+}
+.container_principal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 50px 0;
+}
+#cargo-img {
+  text-transform: uppercase;
+}
+.inabilitado {
+  filter: grayscale(100%);
+  background-color: rgb(170, 170, 170);
+}
+.naoselecionar {
+  -webkit-user-select: none;
+  user-select: none;
+}
+.container-botao{
+    display: flex;
+    justify-content: center;
+    margin: 40px 0 -10px 0;
+}
+.botao-download:disabled{
+    background-color: transparent;
+    color: #808080;
+    border: #808080 solid 3px;
+    border-radius: 10px;
+}
+.botao-download::selection{
+    border: none;
+}
+.botao-download{
+    background-color: transparent;
+    color: #007bff;
+    border: #007bff solid 3px;
+    border-radius: 10px;
+}
