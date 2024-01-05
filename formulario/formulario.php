@@ -43,12 +43,52 @@ if (isset($_POST['gera_assinatura'])) {
 	include '../conexao.php';
 
 	$sql = "INSERT INTO tbl_telefones (cp_usuario_rede, cp_secretaria, cp_nome, cp_departamento, cp_cargo, cp_email, cp_telefone, cp_andar, cp_cep, cp_site, cp_nasc_dia, cp_nasc_mes)
-            VALUES ('$rede', '$secretaria', '$nome', '$unidade', '$cargo', '$email', '$fone_sql', '$endereco_completo', '$cep', '$site', $dia, $mes)";
+        VALUES ('$rede', '$secretaria', '$nome', '$unidade', '$cargo', '$email', '$fone_sql', '$endereco_completo', '$cep', '$site', '$dia', '$mes')";
+	
+	$sql_update = "UPDATE tbl_telefones 
+	SET cp_secretaria = '$secretaria', 
+	cp_nome = '$nome', 
+	cp_departamento = '$unidade', 
+	cp_cargo = '$cargo', 
+	cp_email = '$email', 
+	cp_telefone = '$fone_sql', 
+	cp_andar = '$endereco_completo', 
+	cp_cep = '$cep', 
+	cp_site = '$site', 
+	cp_nasc_dia = '$dia', 
+	cp_nasc_mes = '$mes'
+	WHERE cp_usuario_rede = '$rede'";
 
-	if ($conn->query($sql) === TRUE) {
+	$busca = "SELECT cp_usuario_rede FROM tbl_telefones WHERE cp_usuario_rede = '$rede'";
+
+	$result = $conn->query($busca);
+	
+	if ($result) {
+		if ($result->num_rows > 0) {
+			$sql_update;
+			if ($conn->query($sql_update) === TRUE) {
+			} else {
+				echo "Erro ao inserir registro: " . $conn->error;
+			}
+		} else {
+			$sql;
+			if ($conn->query($sql) === TRUE) {
+			} else {
+				echo "Erro ao inserir registro: " . $conn->error;
+			}
+		}
 	} else {
-		echo "Erro ao inserir registro: " . $conn->error;
+		echo "Erro na consulta: " . $conn->error;
 	}
+
+	// $colunasArray = array();
+
+	// while ($row = $conn->query($sql) === TRUE) {
+
+	// 	echo $colunasArray[] =  $row['names'];
+
+	// }
+
 }
 include '../unidades.php';
 ?>
@@ -136,7 +176,7 @@ include '../unidades.php';
 					<select onclick="inserir_textoSelect()" class="form-control">
 						<?php
 						for ($i = 1; $i <= 31; $i++) {
-							echo '<option value="'.$i.'">'.$i.'</option>';
+							echo '<option value="' . $i . '">' . $i . '</option>';
 						}
 						?>
 					</select>
